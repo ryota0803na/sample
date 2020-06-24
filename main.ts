@@ -1,22 +1,61 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    if (ジャンケン == 1 && receivedNumber == 1) {
-        radio.sendString("あいこ")
+    basic.pause(2000)
+    if (ジャンケン == 1 && receivedNumber == 3) {
+        basic.showLeds(`
+            # . . . #
+            . # . # .
+            . . # . .
+            . # . # .
+            # . . . #
+            `)
     } else if (ジャンケン == 1 && receivedNumber == 2) {
-        radio.sendString("まけ")
-    } else if (ジャンケン == 1 && receivedNumber == 3) {
-        radio.sendString("かち")
-    } else if (ジャンケン == 2 && receivedNumber == 2) {
-        radio.sendString("あいこ")
+        basic.showLeds(`
+            . # # # .
+            # . . . #
+            # . . . #
+            # . . . #
+            . # # # .
+            `)
     } else if (ジャンケン == 2 && receivedNumber == 3) {
-        radio.sendString("まけ")
-    } else if (ジャンケン == 2 && receivedNumber == 1) {
-        radio.sendString("かち")
-    } else if (ジャンケン == 3 && receivedNumber == 3) {
-        radio.sendString("あいこ")
+        basic.showLeds(`
+            . # # # .
+            # . . . #
+            # . . . #
+            # . . . #
+            . # # # .
+            `)
     } else if (ジャンケン == 3 && receivedNumber == 1) {
-        radio.sendString("まけ")
+        basic.showLeds(`
+            . # # # .
+            # . . . #
+            # . . . #
+            # . . . #
+            . # # # .
+            `)
+    } else if (ジャンケン == 2 && receivedNumber == 1) {
+        basic.showLeds(`
+            # . . . #
+            . # . # .
+            . . # . .
+            . # . # .
+            # . . . #
+            `)
     } else if (ジャンケン == 3 && receivedNumber == 2) {
-        radio.sendString("かち")
+        basic.showLeds(`
+            # . . . #
+            . # . # .
+            . . # . .
+            . # . # .
+            # . . . #
+            `)
+    } else {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            # # # # #
+            . . . . .
+            . . . . .
+            `)
     }
 })
 input.onButtonPressed(Button.A, function () {
@@ -40,15 +79,6 @@ input.onButtonPressed(Button.AB, function () {
         `)
     radio.sendNumber(3)
     ジャンケン = 3
-})
-radio.onReceivedString(function (receivedString) {
-    if (receivedString == "かち") {
-        basic.showIcon(IconNames.Happy)
-    } else if (receivedString == "まけ") {
-        basic.showIcon(IconNames.Sad)
-    } else if (receivedString == "あいこ") {
-        basic.showIcon(IconNames.Asleep)
-    }
 })
 input.onButtonPressed(Button.B, function () {
     basic.showLeds(`
